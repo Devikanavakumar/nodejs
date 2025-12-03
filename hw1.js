@@ -1,4 +1,4 @@
-let fullName = `  David Beckham  `;
+let fullName = `  Alice Johnson `;
 let welcomeMsg = `   Welcome to the new platform! Hope you enjoy your experience here.   `;
 
 let userData = {
