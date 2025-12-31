@@ -1,27 +1,16 @@
-const readline = require("readline");
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-const students = [
-  { id: 1, name: "rajesh" },
-  { id: 2, name: "rahul" },
-  { id: 3, name: "sruthi" }
+const fs = require("fs");
+
+let id = Number(fs.readFileSync(0, "utf8"));
+
+let students = [
+  { id: 1, name: "Rajesh" },
+  { id: 2, name: "Rahul" },
+  { id: 3, name: "Sruthi" }
 ];
-rl.question("Enter student ID: ", (answer) => {
-  const idToFind = Number(answer);
-  const student = students.find(s => s.id === idToFind);
-  if (student) {
-    console.log(`Student with ID ${idToFind} is ${student.name}`);
-  } else {
-    console.log("No student found with that ID");
+
+for (let i = 0; i < students.length; i++) {
+  if (students[i].id === id) {
+    console.log(students[i].name);
+    break;
   }
-
-  rl.close()
-});
-
-
-  
-
-
-
+}

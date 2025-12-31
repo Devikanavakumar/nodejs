@@ -1,58 +1,34 @@
+const fs = require("fs");
+
+let input = fs.readFileSync(0, "utf8").trim().split(" ");
+
+let a = Number(input[0]);
+let b = Number(input[1]);
+
+let op = input[2];  
 
 class Calculator {
-  add(a, b) {
-    return a + b;
-  }
-
-  subtract(a, b) {
-    return a - b;
-  }
-
-  multiply(a, b) {
-    return a * b;
-  }
-
-  divide(a, b) {
-    if (b === 0) {
-      return "Error: Division by zero is not allowed";
-    }
-    return a / b;
-  }
+  add(x, y) { return x + y; }
+  sub(x, y) { return x - y; }
+  mul(x, y) { return x * y; }
+  div(x, y) { return y === 0 ? "Cannot divide by zero" : x / y; }
 }
-const readline = require("readline");
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
-const calc = new Calculator();
+let calc = new Calculator();
 
-rl.question("Enter first number: ", (num1) => {
-  rl.question("Enter second number: ", (num2) => {
-    rl.question("Choose operation (+, -, *, /): ", (op) => {
-      const a = Number(num1);
-      const b = Number(num2);
-
-      let result;
-      switch (op) {
-        case "+":
-          result = calc.add(a, b);
-          break;
-        case "-":
-          result = calc.subtract(a, b);
-          break;
-        case "*":
-          result = calc.multiply(a, b);
-          break;
-        case "/":
-          result = calc.divide(a, b);
-          break;
-        default:
-          result = "Invalid operation!";
-      }
-
-      console.log(`Result: ${result}`);
-      rl.close();
-    });
-  });
-});
+switch(op) {
+  case "add":
+    console.log(calc.add(a, b));
+    break;
+  case "sub":
+    console.log(calc.sub(a, b));
+    break;
+  case "mul":
+    console.log(calc.mul(a, b));
+    break;
+  case "div":
+    console.log(calc.div(a, b));
+    break;
+  default:
+    console.log("Invalid operation");
+}
